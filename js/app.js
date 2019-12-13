@@ -12,6 +12,7 @@ var vm1 = new Vue({
     show: function() {
       this.showParagraph = true;
       this.updateTitle('The VueJS Instance (Updated)');
+      this.$refs.myButton.innerText = 'Test';
     },
     updateTitle: function(title) {
       this.title = title;
@@ -30,6 +31,8 @@ var vm1 = new Vue({
 });
 
 console.log(vm1.$data === data);
+// Overrides the DOM h1, and now does not have a react content any more
+vm1.$refs.heading.innerText = 'Something else';
 
 setTimeout(() => { 
   vm1.title = 'Changed by Timer';
