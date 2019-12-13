@@ -6,7 +6,7 @@ var data = {
 };
 
 var vm1 = new Vue({
-  el: '#app1',
+  // el: '#app1',
   data: data,
   methods: {
     show: function() {
@@ -30,9 +30,11 @@ var vm1 = new Vue({
   }
 });
 
-console.log(vm1.$data === data);
+vm1.$mount('#app1');
+
+// console.log(vm1.$data === data);
 // Overrides the DOM h1, and now does not have a react content any more
-vm1.$refs.heading.innerText = 'Something else';
+// vm1.$refs.heading.innerText = 'Something else';
 
 setTimeout(() => { 
   vm1.title = 'Changed by Timer';
@@ -50,3 +52,13 @@ var vm2 = new Vue({
     }
   }
 });
+
+
+var vm3 = new Vue({
+  template: '<h1>Hello!</h1>'
+});
+
+// vm3.$mount('#app3');
+
+vm3.$mount();
+document.getElementById('app3').appendChild(vm3.$el);  // With pure vanilla.js
