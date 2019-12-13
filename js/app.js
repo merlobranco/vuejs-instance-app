@@ -5,6 +5,11 @@ var data = {
   showParagraph: false
 };
 
+// Registering a component in order to reuse it in all our Vuejs instances
+Vue.component('hello', {
+  template: '<h1>Hello!</h1>'
+});
+
 var vm1 = new Vue({
   // el: '#app1',
   data: data,
@@ -55,7 +60,7 @@ var vm2 = new Vue({
 
 
 var vm3 = new Vue({
-  template: '<h1>Hello!</h1>'
+  template: '<h1>Hello!</h1>' // It will appear only once
 });
 
 // vm3.$mount('#app3');
