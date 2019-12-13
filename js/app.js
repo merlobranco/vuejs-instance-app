@@ -1,11 +1,13 @@
 'use strict';
 
+var data = {
+  title: 'The VueJS Instance',
+  showParagraph: false
+};
+
 var vm1 = new Vue({
   el: '#app1',
-  data: {
-    title: 'The VueJS Instance',
-    showParagraph: false
-  },
+  data: data,
   methods: {
     show: function() {
       this.showParagraph = true;
@@ -27,7 +29,12 @@ var vm1 = new Vue({
   }
 });
 
-setTimeout(() => vm1.title = 'Changed by Timer',  3000);
+console.log(vm1.$data === data);
+
+setTimeout(() => { 
+  vm1.title = 'Changed by Timer';
+  vm1.show();
+},  3000);
 
 var vm2 = new Vue({
   el: '#app2',
